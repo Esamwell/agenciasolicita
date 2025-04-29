@@ -21,6 +21,8 @@ Sistema de gerenciamento de solicitações e clientes para agências, desenvolvi
 
 ## 🛠️ Instalação e Execução
 
+### 🖥️ Instalação Local (Desenvolvimento)
+
 1. Clone o repositório:
 ```bash
 git clone https://github.com/Esamwell/agenciasolicita.git
@@ -38,6 +40,39 @@ npm run dev
 ```
 
 4. Acesse a aplicação em `http://localhost:5173`
+
+### 🌐 Instalação em Produção
+
+Para instalar em um servidor Linux (Ubuntu/Debian), você pode usar o script de instalação automática:
+
+1. Baixe o script de instalação:
+```bash
+wget https://raw.githubusercontent.com/Esamwell/agenciasolicita/main/install.sh
+```
+
+2. Torne o script executável:
+```bash
+chmod +x install.sh
+```
+
+3. Execute o script (como root):
+```bash
+sudo ./install.sh
+```
+
+O script irá:
+- Instalar Node.js e Nginx
+- Configurar o ambiente de produção
+- Instalar e configurar PM2 para gerenciamento do processo
+- Configurar SSL com Certbot
+- Construir e implantar a aplicação
+
+Após a instalação, o sistema estará disponível em `https://sistema.hubsa2.com.br`
+
+> **Nota**: Antes de executar o script, certifique-se de:
+> - Ter um domínio configurado apontando para o IP do servidor
+> - Substituir `seu-email@exemplo.com` no script pelo seu email real
+> - Ter acesso root ao servidor
 
 ## 📁 Estrutura do Projeto
 
