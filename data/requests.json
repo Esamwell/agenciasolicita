@@ -1,0 +1,31 @@
+[
+  {
+    "id": "8c1d9b2b-ee2a-4098-b566-01ecdb11c757",
+    "title": "Card Uno Fire ",
+    "description": "Preciso de um card \n$\nkm ",
+    "type": "card",
+    "status": "in-progress",
+    "clientId": "89cd6e92-6756-4608-8418-0fe16144dffe",
+    "clientName": "ESA - Escola Superior de Advocacia Orlando Gomes",
+    "createdAt": "2025-04-29T14:59:12.079Z",
+    "updatedAt": "2025-04-29T15:00:51.054Z",
+    "comments": [
+      {
+        "id": "b16f6ec5-ed6a-402b-ac61-10a1f1eeee61",
+        "content": "Preciso desse card para terça a tarde\n",
+        "userId": "89cd6e92-6756-4608-8418-0fe16144dffe",
+        "userName": "ESA - Escola Superior de Advocacia Orlando Gomes",
+        "userRole": "client",
+        "createdAt": "2025-04-29T14:59:27.395Z"
+      },
+      {
+        "id": "51ee2e8d-64cb-4e9f-8bbf-cded88b89aab",
+        "content": "Vai ficar pronto hoje",
+        "userId": "admin-1",
+        "userName": "Erico Samuel",
+        "userRole": "admin",
+        "createdAt": "2025-04-29T15:00:14.329Z"
+      }
+    ]
+  }
+]
