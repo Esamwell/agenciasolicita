@@ -7,9 +7,9 @@ echo "📦 Atualizando o sistema..."
 apt update && apt upgrade -y
 
 # Instalar dependências
-echo "📦 Instalando dependências..."
+echo "📦 Instalando Node.js, Nginx e Certbot..."
 curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-apt install -y nodejs nginx
+apt install -y nodejs nginx certbot python3-certbot-nginx
 
 # Instalar PM2 globalmente
 echo "📦 Instalando PM2..."
@@ -23,11 +23,7 @@ cd /var/www/sistema.hubsa2.com.br
 # Clonar o repositório
 echo "📥 Clonando o repositório..."
 git clone https://github.com/Esamwell/agenciasolicita.git .
-cd Desktop/Nova\ pasta/agenciasolicita-main
-mv * ../../
-mv .* ../../ 2>/dev/null || true
-cd ../../../
-rm -rf Desktop
+#cd /var/www/sistema.hubsa2.com.br
 
 # Instalar dependências do projeto
 echo "📦 Instalando dependências do projeto..."
@@ -62,9 +58,15 @@ server {
 }
 EOF
 
-# Ativar o site
+# Ativar o site no Nginx
 ln -sf /etc/nginx/sites-available/sistema.hubsa2.com.br /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
+
+# Testar configuração do Nginx
+nginx -t
+
+# Reiniciar Nginx
+systemctl restart nginx
 
 # Configurar PM2
 echo "🔧 Configurando PM2..."
@@ -82,21 +84,14 @@ module.exports = {
 }
 EOF
 
-# Testar configuração do Nginx
-nginx -t
-
-# Reiniciar Nginx
-systemctl restart nginx
-
 # Iniciar aplicação com PM2
 pm2 start ecosystem.config.js
 pm2 save
-pm2 startup
+pm2 startup systemd -u $USER --hp $(eval echo ~$USER)
 
 # Instalar e configurar Certbot para SSL
 echo "🔒 Configurando SSL..."
-apt install -y certbot python3-certbot-nginx
 certbot --nginx -d sistema.hubsa2.com.br --non-interactive --agree-tos --email seu-email@exemplo.com
 
 echo "✅ Instalação concluída!"
-echo "🌐 Acesse seu sistema em: https://sistema.hubsa2.com.br" 
+echo "🌐 Acesse seu sistema em: https://sistema.hubsa2.com.br"
